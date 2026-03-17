@@ -15,6 +15,10 @@ monitor_browser.log
 monitor.log
 *.out
 
+# Runtime state
+data/state.json
+data/
+
 # Config (contains secrets)
 config.yaml
 

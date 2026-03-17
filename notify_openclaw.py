@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-使用 OpenClaw 消息工具发送企业微信通知
+使用 OpenClaw 消息工具发送钉钉通知
 """
 
 import subprocess

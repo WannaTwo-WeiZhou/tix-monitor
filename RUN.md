@@ -16,13 +16,18 @@ cp config.yaml.example config.yaml
 nano config.yaml
 ```
 
-### 设置企业微信 Webhook
+### 配置 OpenClaw 通知
 
-获取企业微信机器人 Webhook 后：
+本项目使用 OpenClaw 工具发送钉钉通知：
 
+1. 安装 OpenClaw（如果尚未安装）：
 ```bash
-export WECOM_WEBHOOK="https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=YOUR_KEY"
+pip install openclaw  # 或按 OpenClaw 文档安装
 ```
+
+2. 配置钉钉通知渠道（参考 OpenClaw 文档）
+
+3. 在 `monitor.py` 中设置 `NOTIFY_USER_ID` 为你的钉钉会话 ID
 
 ## 3. 运行
 
@@ -59,16 +64,19 @@ pkill -f monitor.py
 
 ## 5. 测试通知
 
-设置好 Webhook 后运行：
+测试 OpenClaw 钉钉通知：
 
 ```bash
-export WECOM_WEBHOOK="your-webhook-url"
 python3 -c "
-import os
-os.environ['WECOM_WEBHOOK'] = os.getenv('WECOM_WEBHOOK')
-from monitor import send_wechat_message
-send_wechat_message('🔔 测试通知')
+from monitor import send_dingtalk_message
+send_dingtalk_message('🔔 测试通知')
 "
+```
+
+或直接测试 OpenClaw 命令：
+
+```bash
+openclaw message send --channel dingtalk --target YOUR_CONVERSATION_ID --message "测试"
 ```
 
 ---
@@ -97,9 +105,7 @@ targets:
 curl -I https://www.damai.cn/
 ```
 
-**收不到通知**：测试 Webhook
+**收不到通知**：测试 OpenClaw
 ```bash
-curl $WECOM_WEBHOOK \
-  -H "Content-Type: application/json" \
-  -d '{"msgtype":"text","text":{"content":"测试"}}'
+openclaw message send --channel dingtalk --target YOUR_CONVERSATION_ID --message "测试"
 ```
