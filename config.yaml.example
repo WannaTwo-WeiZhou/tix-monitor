@@ -1,0 +1,32 @@
+# 网页监控配置示例
+# 复制此文件为 config.yaml 并修改为你的实际配置
+
+targets:
+  # 示例 1：大麦网演唱会列表
+  - name: "大麦网 - 演唱会"
+    url: "https://www.damai.cn/yyj/"
+    interval_seconds: 300  # 5 分钟
+    keyword: "五月天"      # 可选，监控包含特定关键词的变化
+    
+  # 示例 2：猫眼演出
+  - name: "猫眼 - 周杰伦"
+    url: "https://www.maoyan.com/yyj/"
+    interval_seconds: 180  # 3 分钟
+    keyword: "周杰伦"
+    
+  # 示例 3：票星球
+  - name: "票星球 - 全部演出"
+    url: "https://www.piaoxingqiu.com/"
+    interval_seconds: 600  # 10 分钟
+    # 不设置 keyword，监控任何变化
+
+# 全局设置
+settings:
+  # 用户代理（避免被识别为爬虫）
+  user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+  
+  # 请求超时（秒）
+  timeout: 10
+  
+  # 是否启用日志
+  logging: true

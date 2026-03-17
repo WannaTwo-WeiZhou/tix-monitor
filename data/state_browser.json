@@ -1,0 +1,17 @@
+{
+  "大麦网 - 演出详情_https://m.damai.cn/shows/item.html?itemId=1021197513737": {
+    "hash": "383bf784c22c538777d8e8bbed05fcb1",
+    "ticket_info": {
+      "status": "sold_out",
+      "prices": [
+        "380.0",
+        "655.0",
+        "780"
+      ],
+      "text_length": 3408,
+      "timestamp": "2026-03-13T14:57:08.810358"
+    },
+    "check_time": "2026-03-13T14:57:08.874410",
+    "url": "https://m.damai.cn/shows/item.html?itemId=1021197513737"
+  }
+}
