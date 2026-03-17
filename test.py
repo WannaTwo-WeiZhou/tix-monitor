@@ -7,9 +7,6 @@ import os
 import sys
 from pathlib import Path
 
-# 添加环境变量测试
-os.environ["WECOM_WEBHOOK"] = "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=test"
-
 # 导入监控模块
 sys.path.insert(0, str(Path(__file__).parent))
 from monitor import (
@@ -18,7 +15,7 @@ from monitor import (
     save_state,
     compute_hash,
     filter_content,
-    send_wechat_message
+    send_dingtalk_message
 )
 
 print("=" * 50)
@@ -63,10 +60,11 @@ save_state(state)
 loaded = load_state()
 print(f"  ✅ 状态保存成功：{'test_target' in loaded}")
 
-# 测试 5：企业微信通知（模拟）
-print("\n[测试 5] 企业微信通知...")
-result = send_wechat_message("🔔 测试通知\n\n这是一条测试消息")
-print(f"  {'✅ 发送成功' if result else '⚠️  发送失败（可能是测试 Webhook）'}")
+# 测试 5：钉钉通知（需要 OpenClaw 已配置）
+print("\n[测试 5] 钉钉通知...")
+print("  提示：此测试需要 OpenClaw 工具已正确安装和配置")
+result = send_dingtalk_message("🔔 测试通知\n\n这是一条测试消息")
+print(f"  {'✅ 发送成功' if result else '⚠️  发送失败（请检查 OpenClaw 配置）'}")
 
 print("\n" + "=" * 50)
 print("所有测试完成！")

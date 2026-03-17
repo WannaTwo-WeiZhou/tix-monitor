@@ -1,6 +1,6 @@
 # 网页监控工具 - 精简版
 
-监控网页内容变化，通过企业微信机器人实时通知。
+监控网页内容变化，通过 OpenClaw 工具发送钉钉通知。
 
 ---
 
@@ -29,10 +29,12 @@ targets:
     keyword: "五月天"
 ```
 
-**设置企业微信 Webhook**：
-```bash
-export WECOM_WEBHOOK="https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=YOUR_KEY"
-```
+**配置通知**：
+
+本项目使用 [OpenClaw](https://github.com/openclaw) 工具发送钉钉通知。请确保：
+1. 已安装 OpenClaw：`pip install openclaw`（或按 OpenClaw 文档安装）
+2. 已配置好钉钉通知渠道
+3. 在 `monitor.py` 中设置正确的 `NOTIFY_USER_ID`（钉钉会话 ID）
 
 ### 3. 运行
 
@@ -61,9 +63,8 @@ settings:
 
 ### 环境变量
 
-| 变量名 | 说明 | 示例 |
-|--------|------|------|
-| `WECOM_WEBHOOK` | 企业微信机器人 Webhook | `https://qyapi.weixin.qq.com/...` |
+本项目通过代码配置通知方式（OpenClaw + 钉钉），无需额外环境变量。
+如需修改通知目标，请编辑 `monitor.py` 中的 `NOTIFY_USER_ID` 常量。
 
 ---
 
@@ -140,13 +141,13 @@ curl -I "https://www.damai.cn/yyj/"
 
 ### 问题 2：收不到通知
 
-检查 Webhook 是否正确：
+检查 OpenClaw 是否正确安装和配置：
 ```bash
-export WECOM_WEBHOOK="your-url"
-curl $WECOM_WEBHOOK \
-  -H "Content-Type: application/json" \
-  -d '{"msgtype":"text","text":{"content":"测试"}}'
+# 测试 OpenClaw 是否可用
+openclaw message send --channel dingtalk --target YOUR_CONVERSATION_ID --message "测试"
 ```
+
+如果 OpenClaw 未安装，请参考 OpenClaw 文档进行安装配置。
 
 ### 问题 3：频繁误报
 

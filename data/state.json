@@ -1,12 +1,7 @@
 {
-  "测试 - GitHub Gist_https://gist.githubusercontent.com/WannaTwo-WeiZhou/14181eb91d72898ae6edcc49c7cd26e4/raw/": {
-    "hash": "b360366af61aa9623d0d312f09180c8a",
-    "check_time": "2026-03-12T15:39:49.269201",
-    "url": "https://gist.githubusercontent.com/WannaTwo-WeiZhou/14181eb91d72898ae6edcc49c7cd26e4/raw/"
-  },
-  "大麦网 - 演出详情_https://m.damai.cn/shows/item.html?itemId=1021197513737": {
-    "hash": "b4f5dba9a0f9077d4bf0d97e58cc9f37",
-    "check_time": "2026-03-12T15:40:19.351889",
-    "url": "https://m.damai.cn/shows/item.html?itemId=1021197513737"
+  "test_target": {
+    "hash": "abc123",
+    "check_time": "2026-03-11T18:00:00",
+    "url": "https://example.com"
   }
 }
